@@ -1,6 +1,16 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+
+    /*
+        Quicksort with pivot at the end of the array
+
+        Time complexity is:
+            Best    -> n log(n)
+            Average -> n log(n)
+            Worst   -> n ^2 (if already sorted)
+     */
+
     public static void main(String[] args) {
         int [] array = {8, 2, 3, 4, 1, 7, 9, 5, 6};
 
@@ -13,12 +23,12 @@ public class Main {
         if (end <= start) return;
 
         int pivot = partition(array, start, end);
-        quicksort(array, start, pivot - 1);
-        quicksort(array, pivot + 1, end);
+        quicksort(array, start, pivot - 1); // left recursion
+        quicksort(array, pivot + 1, end); // right recursion
     }
 
     private static int partition(int[] array, int start, int end) {
-        int pivot = array[end];
+        int pivot = array[end]; // pivot at the end version
         int i = start - 1;
 
         for (int j = start; j <= end - 1; j++) {
